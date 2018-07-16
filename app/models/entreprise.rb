@@ -20,13 +20,13 @@ class Entreprise < ApplicationRecord
 
   belongs_to :user
 
-  validates :name_entreprise, presence: true, length: {maximum: 50}, uniqueness: { case_sensitive: false},
-            format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters'}
+  validates :name_entreprise, presence: true, length: {maximum: 20}, uniqueness: { case_sensitive: false},
+            format: { with: /\A[\w\-]+\Z/i, notice: 'contains invalid characters'}
 
   validates :subdmain,
-            uniqueness: { case_sensitive: false},
-            format: { with: /\A[\w\-]+\Z/i, allow_blank: true, message: 'contains invalid characters'},
-            exclusion: { in: RESTRICTED_SUBDOMAINS, message: 'restricted'}
+            uniqueness: { case_sensitive: false}, length: {maximum: 20},
+            format: { with: /\A[\w\-]+\Z/i, allow_blank: false, message: 'contains invalid characters'},
+            exclusion: { in: RESTRICTED_SUBDOMAINS, notice: 'restricted'}
 
   before_validation :downcase_subdomain
 

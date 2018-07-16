@@ -16,7 +16,7 @@ class EntreprisesController < ApplicationController
     @entreprise.owner_id = current_user.id
 
     if @entreprise.save
-      redirect_to entreprises_listing_entreprise_path, flash[:notice] = "Saved..."
+      redirect_to listing_entreprise_path, flash[:notice] = "Saved..."
     else
       flash[:alert] = "Something went wrong..."
       render :new
