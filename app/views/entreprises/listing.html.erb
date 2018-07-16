@@ -1,12 +1,13 @@
-<h2> LISTING DES ENTREPRISES </h2>
+<h2> VOTRE LISTING DES ENTREPRISES </h2>
 <div class="row">
   <div class="panel-body">
 
         <% @entreprises.each do |entreprise| %>
           <div class="row">
             <div class="col-md-7">
-              <h4><%= entreprise.name_entreprise %></h4>
+              <h4><%= link_to entreprise.name_entreprise, edit_entreprise_path(entreprise) %></h4>
             </div>
+
             <div>
               <% if entreprise.active_entrerpise? %>
                 <%= button_to "Unactivate", unhide_case_entreprise_path(id: entreprise.id), class: "btn btn-normal" %>

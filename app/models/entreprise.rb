@@ -32,7 +32,10 @@ class Entreprise < ApplicationRecord
 
   before_validation :downcase_name
 
+
+
   private
+
 
   def downcase_name
     self.name_entreprise = name_entreprise.try(:downcase)
