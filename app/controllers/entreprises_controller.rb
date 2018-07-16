@@ -16,7 +16,7 @@ class EntreprisesController < ApplicationController
     @entreprise.owner_id = current_user.id
 
     if @entreprise.save
-      redirect_to listing_entreprise_path, flash[:notice] = "Saved..."
+      redirect_to entreprise_listing_path, flash[:notice] = "Saved..."
     else
       flash[:alert] = "Something went wrong..."
       render :new
@@ -24,12 +24,11 @@ class EntreprisesController < ApplicationController
   end
 
   def listing
-    @entreprises = entreprises.where(["owner_id = ?", current_user.id])
+    @entreprises = Entreprise.where(:owner_id => current_user.id)
   end
-
-  def show
-
-  end
+ def show
+   @entreprises = current_user.entreprises
+ end
 
   def update
     if @entreprise.update(entreprise_params)
@@ -40,6 +39,17 @@ class EntreprisesController < ApplicationController
     redirect_back(fallback_location: request.referer)
   end
 
+  def hide_case
+    @case = Entreprise.find(params[:id])
+    @case.update(active_entrerpise: true)
+    redirect_to entreprises_listing_path
+  end
+
+  def unhide_case
+    @case = Entreprise.find(params[:id])
+    @case.update(active_entrerpise: false)
+    redirect_to entreprises_listing_path
+  end
   private
 
   # verifie si la personne connectée est celle qui a creee le owner de l'entreprise
