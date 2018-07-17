@@ -16,7 +16,7 @@
 
 class Entreprise < ApplicationRecord
 
-  RESTRICTED_SUBDOMAINS = %w(www)
+  RESTRICTED_SUBDOMAINS = %w(www, 'admin', 'public')
 
   belongs_to :user
 
@@ -32,10 +32,13 @@ class Entreprise < ApplicationRecord
 
   before_validation :downcase_name
 
-
+  after_create :create_tenant
 
   private
 
+    def create_tenant
+      Apartment::Tenant.create(subdmain)
+    end
 
   def downcase_name
     self.name_entreprise = name_entreprise.try(:downcase)
