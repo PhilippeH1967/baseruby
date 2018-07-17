@@ -18,7 +18,7 @@ class EntreprisesController < ApplicationController
     if @entreprise.save
       redirect_to entreprise_listing_path, flash[:notice] = "Saved..."
     else
-      flash[:alert] = "Something went wrong..."
+      flash[:alert] = "Something went wrong...#{@entreprise.errors.full_messages.join('. ')}"
       render :new
     end
   end
@@ -34,7 +34,7 @@ class EntreprisesController < ApplicationController
     if @entreprise.update(entreprise_params)
       flash[:notice] = "Saved..."
     else
-      flash[:notice] = "Something went wrong..."
+      flash[:alert] = "Something went wrong...#{@entreprise.errors.full_messages.join('. ')}"
     end
     redirect_back(fallback_location: request.referer)
   end
