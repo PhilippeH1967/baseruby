@@ -1,6 +1,7 @@
 class SubdmainConstraint
   def self.matches?(request)
-    request.subdmain.present? && request.subdmain != 'www'
+    subdmains = %w{ www admin public test }
+    request.subdmain.present? && !subdmains.include?(request.subdmain)
   end
 end
 
