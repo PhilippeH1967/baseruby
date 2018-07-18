@@ -50,6 +50,12 @@ class EntreprisesController < ApplicationController
     @case.update(active_entrerpise: false)
     redirect_to entreprises_listing_path
   end
+
+  def create_tenant
+    Apartment::Tenant.create(subdmain)
+    redirect_to entreprise_path(params[:entreprise])
+  end
+
   private
 
   # verifie si la personne connectée est celle qui a creee le owner de l'entreprise

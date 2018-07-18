@@ -4,11 +4,13 @@
 
         <% @entreprises.each do |entreprise| %>
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-5">
               <h4><%= link_to entreprise.name_entreprise, edit_entreprise_path(entreprise) %></h4>
             </div>
-
-            <div>
+            <div class="col-md-2">
+            <%= link_to "add new tenant", create_tenant_entreprise_path(id: entreprise.id)  %>
+            </div>
+              <div>
               <% if entreprise.active_entrerpise? %>
                 <%= button_to "Unactivate", unhide_case_entreprise_path(id: entreprise.id), class: "btn btn-normal" %>
               <% else %>

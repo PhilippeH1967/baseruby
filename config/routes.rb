@@ -1,8 +1,19 @@
+class SubdmainConstraint
+  def self.matches?(request)
+    request.subdmain.present? && request.subdmain != 'www'
+  end
+end
+
 Rails.application.routes.draw do
+
+  constraints SubdmainConstraint do
+
+  end
 
   get 'layouts/confirmed'
   get 'pages/home'
   get 'entreprises/listing'
+
   namespace :admin do
     resources :users
 
@@ -13,6 +24,7 @@ Rails.application.routes.draw do
   resources :entreprises do
     post 'hide_case', on: :member
     post 'unhide_case', on: :member
+    post 'create_tenant', on: :member
    end
 
   root to: "pages#home"

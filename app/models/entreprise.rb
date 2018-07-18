@@ -32,13 +32,11 @@ class Entreprise < ApplicationRecord
 
   before_validation :downcase_name
 
-  after_create :create_tenant
+
 
   private
 
-    def create_tenant
-      Apartment::Tenant.create(subdmain)
-    end
+
 
   def downcase_name
     self.name_entreprise = name_entreprise.try(:downcase)
