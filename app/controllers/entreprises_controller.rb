@@ -38,7 +38,7 @@ class EntreprisesController < ApplicationController
     end
     redirect_back(fallback_location: request.referer)
   end
-
+# permet de mettre une entreprise inactive.
   def hide_case
     @case = Entreprise.find(params[:id])
     @case.update(active_entrerpise: true)
@@ -50,14 +50,11 @@ class EntreprisesController < ApplicationController
     @case.update(active_entrerpise: false)
     redirect_to entreprises_listing_path
   end
-
+# creation du tenant dans apartement
   def create_tenant
-
-
     Apartment::Tenant.create(params[:id])
-    redirect_to entreprise_path(enterprise_id: params[:entreprise])
-
-
+    Apartment::Tenant.switch(params[:id])
+ #   redirect_to entreprise_path(enterprise_id: params[:entreprise])
   end
 
   private
