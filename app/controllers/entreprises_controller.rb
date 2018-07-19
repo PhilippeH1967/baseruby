@@ -52,8 +52,12 @@ class EntreprisesController < ApplicationController
   end
 
   def create_tenant
-    Apartment::Tenant.create(subdmain)
-    redirect_to entreprise_path(params[:entreprise])
+
+
+    Apartment::Tenant.create(params[:id])
+    redirect_to entreprise_path(enterprise_id: params[:entreprise])
+
+
   end
 
   private
