@@ -57,6 +57,7 @@ class EntreprisesController < ApplicationController
 
 
     redirect_to entreprise_path(enterprise_id: params[:entreprise])
+    flash[:alert] = "Tenant...#{Apartment::Tenant.current}"
   end
 
   private
