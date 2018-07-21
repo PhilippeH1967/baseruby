@@ -17,7 +17,7 @@ Apartment.configure do |config|
   # A typical example would be a Customer or Tenant model that stores each Tenant's information.
   #
   #  config.excluded_models = %w{ Tenant }
-   config.excluded_models = %w{"User", "Entreprise"}
+   config.excluded_models = ["User", "Entreprise"]
    Apartment::Elevators::Subdomain.excluded_subdomains = ['www', 'admin', 'public']
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.
