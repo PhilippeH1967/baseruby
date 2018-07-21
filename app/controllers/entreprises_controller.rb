@@ -53,8 +53,10 @@ class EntreprisesController < ApplicationController
 # creation du tenant dans apartement
   def create_tenant
     Apartment::Tenant.create(params[:id])
-    Apartment::Tenant.switch(params[:id])
- #   redirect_to entreprise_path(enterprise_id: params[:entreprise])
+    Apartment::Tenant.switch!(params[:id])
+
+
+    redirect_to entreprise_path(enterprise_id: params[:entreprise])
   end
 
   private
