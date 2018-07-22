@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     post 'unhide_case', on: :member
    end
 
-  root to: "pages#home"
+  root to: "entreprises#listing"
 
 end
