@@ -34,6 +34,7 @@ gem "administrate"
 gem 'toastr-rails'
 
 gem 'simple_form'
+gem 'country_select'
 
 gem "paperclip", "~> 6.0.0"
 

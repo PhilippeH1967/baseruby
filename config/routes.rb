@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'layouts/confirmed'
   get 'pages/home'
   get 'entreprises/listing'
+
   namespace :admin do
     resources :users
 

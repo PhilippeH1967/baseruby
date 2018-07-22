@@ -22,3 +22,12 @@
 .field_with_errors input{
   border: 1px solid red !important;
 }
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+  border: 1px solid red !important;
+}
