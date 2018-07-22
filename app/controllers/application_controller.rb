@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     Apartment::Tenant.switch!(params[:id])
     flash[:alert] = "Tenant exists...#{Apartment::Tenant.current}"
    # Apartment::Tenant.reset
-   # redirect_to root_path
-    redirect_to entreprise_path(enterprise_id: params[:entreprise])
+    redirect_to root_path
+   # redirect_to entreprise_path(enterprise_id: params[:entreprise])
   end
 
 
