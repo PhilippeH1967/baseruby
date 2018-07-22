@@ -16,7 +16,7 @@
 
 class Entreprise < ApplicationRecord
 
-  RESTRICTED_SUBDOMAINS = %w(www)
+  RESTRICTED_SUBDOMAINS = %w(www, 'test', 'tests', 'admin', 'public')
 
   belongs_to :user
 
@@ -26,7 +26,10 @@ class Entreprise < ApplicationRecord
   validates :subdmain,
             uniqueness: { case_sensitive: false}, length: {maximum: 20},
             format: { with: /\A[\w\-]+\Z/i, allow_blank: false, message: 'contains invalid characters'},
-            exclusion: { in: RESTRICTED_SUBDOMAINS, notice: 'restricted'}
+         #   exclusion: { in: RESTRICTED_SUBDOMAINS, notice: 'restricted'}
+            exclusion: { in: File.read(Rails.root.join('app/assets/data/reserved_subdomains.txt')).each_line.map{|x| x.strip}}
+
+
 
   before_validation :downcase_subdomain
 
