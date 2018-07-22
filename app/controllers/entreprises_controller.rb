@@ -16,7 +16,7 @@ class EntreprisesController < ApplicationController
     @entreprise.owner_id = current_user.id
 
     if @entreprise.save
-      redirect_to entreprise_listing_path, flash[:notice] = "Saved..."
+      redirect_to entreprises_listing_path, flash[:notice] = "Saved..."
     else
       flash[:alert] = "Something went wrong...#{@entreprise.errors.full_messages.join('. ')}"
       render :new
@@ -32,7 +32,7 @@ class EntreprisesController < ApplicationController
 
   def update
     if @entreprise.update(entreprise_params)
-      flash[:notice] = "Saved..."
+    flash[:notice] = "Saved..."
     else
       flash[:alert] = "Something went wrong...#{@entreprise.errors.full_messages.join('. ')}"
     end

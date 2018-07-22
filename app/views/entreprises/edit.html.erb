@@ -1,39 +1,38 @@
 <div class="row">
   <div class= "col-md-4 col-md-offset-4">
-    <h2 class="text-center"> Entreprise Creation</h2>
+    <h2 class="text-center"> Entreprise Edition</h2>
 
-    <%= form_for @entreprise do |f| %>
+    <%= simple_form_for(@entreprise) do |f| %>
 
 
 
       <div class="form-group">
-        <%= f.label :name_entreprise %><br />
-        <%= f.text_field :name_entreprise,  autofocus: true, placeholder: "name_entreprise", class: "form-control name" %>
+        <%= f.input :name_entreprise,  autofocus: true, placeholder: "name_entreprise", class: "form-control name" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :street_entreprise %><br />
-        <%= f.text_field :street_entreprise,  autofocus: true, placeholder: "street_entreprise", class: "form-control name" %>
+
+        <%= f.input :street_entreprise,  autofocus: true, placeholder: "street_entreprise", class: "form-control name" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :town_entreprise %><br />
-        <%= f.text_field :town_entreprise,  autofocus: true, placeholder: "town_entreprise", class: "form-control name" %>
+
+        <%= f.input :town_entreprise,  autofocus: true, placeholder: "town_entreprise", class: "form-control name" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :zipcode_entreprise%><br />
-        <%= f.text_field :zipcode_entreprise,  autofocus: true, placeholder: "zipcode_entreprise", class: "form-control name" %>
+
+        <%= f.input :zipcode_entreprise,  autofocus: true, placeholder: "zipcode_entreprise", class: "form-control name" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :country_entreprise%><br />
-        <%= f.text_field :country_entreprise,  autofocus: true, placeholder: "country_entreprise", class: "form-control name" %>
+
+        <%= f.input :country_entreprise, as: :text, autofocus: true, placeholder: "country_entreprise", class: "form-control name" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :subdmain%><br />
-        <%= f.text_field :subdmain,  autofocus: true, placeholder: "subdmain", class: "form-control name" %>
+
+        <%= f.input :subdmain,  autofocus: true, placeholder: "subdmain", class: "form-control name" %>
       </div>
 
       <div><%= f.submit "Update entreprise",class: "btn btn-normal"%></div>
