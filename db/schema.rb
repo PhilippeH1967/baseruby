@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_235534) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subdmain"], name: "index_entreprises_on_subdmain"
     t.index ["user_id"], name: "index_entreprises_on_user_id"
   end
 

@@ -16,7 +16,8 @@ class EntreprisesController < ApplicationController
     @entreprise.owner_id = current_user.id
 
     if @entreprise.save
-      redirect_to entreprises_listing_path, flash[:notice] = "Saved..."
+      flash[:notice] = "Saved..."
+      redirect_to action: :listing
     else
       flash[:alert] = "Something went wrong...#{@entreprise.errors.full_messages.join('. ')}"
       render :new
@@ -42,13 +43,13 @@ class EntreprisesController < ApplicationController
   def hide_case
     @case = Entreprise.find(params[:id])
     @case.update(active_entrerpise: true)
-    redirect_to entreprises_listing_path
+    redirect_to action: :listing
   end
 
   def unhide_case
     @case = Entreprise.find(params[:id])
     @case.update(active_entrerpise: false)
-    redirect_to entreprises_listing_path
+    redirect_to action: :listing
   end
   private
 
