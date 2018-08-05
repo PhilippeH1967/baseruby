@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   root to: "entreprises#listing"
 
+  scope path: ':entreprise_name' do
+    get '/', to: 'dashboard#index'
+  end
 end

@@ -4,8 +4,11 @@
 
         <% @entreprises.each do |entreprise| %>
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
               <h4><%= link_to entreprise.name_entreprise, edit_entreprise_path(entreprise) %></h4>
+            </div>
+            <div class="col-md-3">
+              <h4><%= link_to 'dashboard', "/#{entreprise.name_entreprise}" %></h4>
             </div>
 
             <div>
